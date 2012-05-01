@@ -1,0 +1,26 @@
+{% if user.is_authenticated and user.is_staff %}
+{% load i18n %}
+<iframe class="frontadmin-toolbar-frame">
+<div class="frontadmin-toolbar">
+    <span></span>
+    {% if object_name %}
+    <a id="frontadmin-delete-object" href="{{ delete_url }}" class="button red" title="{% trans "Delete" %} {{ app_label }} {{ object_name }} ({% firstof object.title object.label object.name object.slug object.pk %})">{% trans "Delete" %}</a>
+    <a id="frontadmin-change-object" href="{{ change_url }}" class="button" title="{% trans "Edit" %} {{ app_label }} {{ object_name }} ({% firstof object.title object.label object.name object.slug object.pk %})">{% trans "Edit" %}</a>
+    <a id="frontadmin-admin-object" href="{{ change_url }}" class="button" title="{% trans "Edit in admin" %}" target="_parent">{% trans "Admin" %}</a>
+    <a id="frontadmin-history-object" href="{{ history_url }}" class="button" title="{% trans "View change history" %}">{% trans "History" %}</a>
+    {% else %}
+    <a id="frontadmin-admin-changelist" href="{{ changelist_url }}" class="button" target="_parent" title="{% trans "Modify in admin" %}">{% trans "Admin" %}</a>
+    <a id="frontadmin-changelist" href="{{ changelist_url }}" class="button" title="{% trans "Modify in place" %}">{% trans "Edit" %}</a>
+    {% endif %}
+</div>
+{% if object_name %}
+<input type="hidden" id="app_label" value="{{ app_label }}">
+<input type="hidden" id="object_name" value="{{ object_name }}">
+<input type="hidden" id="object_id" value="{{ object.pk }}">
+{% else %}
+<input type="hidden" id="app_label" value="{{ app_label }}">
+<input type="hidden" id="app_label" value="{{ app_model }}">
+{% endif %}
+<style>{% include "frontadmin/toolbar.inc.css" %}</style>
+</iframe>
+{% endif %}
