@@ -1,0 +1,94 @@
+/* Webcore frontadmin's general styles
+ * Author: Maxime Haineault <max@motion-m.ca>
+ * (c) 2012 Motion Média
+ * */
+
+@import "css3.scss";
+
+html.frontadmin {
+    padding-bottom: 24px;
+}
+
+.frontadmin-toolbar-frame {
+    width: 100%;
+    display: block;
+    height: 24px;
+    margin: 0;
+    border: 1px solid #ccc;
+    z-index: 100000;
+    -moz-box-shadow: 0 0 1px #fff;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    opacity: 0.65;
+    display: none;
+}
+
+.frontadmin-show-toolbars .frontadmin-block:hover .frontadmin-toolbar-frame,
+.frontadmin-show-toolbars .frontadmin-toolbar-frame:hover {
+    opacity: 1.0;
+}
+
+.frontadmin-show-toolbars .frontadmin-toolbar-frame,
+.frontadmin-show-toolbars .frontadmin-block {
+    display: block;
+}
+
+.frontadmin-show-toolbars .frontadmin-block *:hover .frontadmin-block-content,
+.frontadmin-show-toolbars .frontadmin-block:hover .frontadmin-block-content > * {
+    /*background-color: #def!important;*/
+    background-color:rgba(1, 174, 240, 0.1)!important;
+
+}
+
+.frontadmin-show-toolbars .frontadmin-block-content {
+    cursor: pointer;
+}
+
+/* Main frontadmin bar */
+#frontadmin-bar-frame {
+    width: 70%;
+    display: block;
+    height: 28px;
+    margin: 0;
+    position: fixed;
+    right: 0;
+    bottom: -1px;
+    border: 1px solid #ccc;
+    z-index: 100000;
+    -moz-box-shadow: 0 0 1px #fff;
+    -moz-border-radius: 2px 2px 0 0;
+    -webkit-border-radius: 2px 2px 0 0;
+    -o-border-radius: 2px 2px 0 0;
+    border-radius: 2px 2px 0 0;
+}
+
+/* Editing popups */
+#frontadmin-iframe-window {
+    background: #222 url(../img/loading.gif) no-repeat center center;
+    border: 1px solid #555;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    moz-border-radius: 3px;
+    -moz-box-shadow: 0 0 100px #fff;
+    -webkit-box-shadow: 0 0 100px #fff;
+    -o-box-shadow: 0 0 100px #fff;
+    box-shadow: 0 0 100px #fff;
+}
+
+#frontadmin-iframe-window iframe {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    moz-border-radius: 3px;
+}
+
+#frontadmin-iframe-window.saving iframe {
+    display: none;
+}
+
+#frontadmin-iframe-window.saving iframe {
+    display: none;
+}

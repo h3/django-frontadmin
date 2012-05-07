@@ -1,0 +1,31 @@
+{% spaceless %}
+{% if user.is_authenticated and user.is_staff %}
+{% load i18n %}
+<iframe id="frontadmin-bar-frame" style="display:none;">
+<div class="frontadmin-bar">
+    <a  id="frontadmin-btn-toggle" 
+        href="#toggle" 
+        title="{% trans "Hide administration toolbars" %}" 
+        data-title="{% trans "Hide administration toolbars" %}" 
+        data-title-collapsed="{% trans "Show administration toolbars" %}" 
+        class="button blue
+    ">&ndash;</a>
+    <span>
+        {% trans "Logged in as " %} 
+        {% if user.first_name or user.last_name %}
+        <a href="{{ user.get_absolute_url }}" title="{% trans "Modify your profile" %}" target="_parent">{{ user.first_name }} {{ user.last_name }}</a>
+        {% else %}
+        <a href="{% url admin:auth_user_change user.id %}" title="{% trans "Modify your profile" %}">{{ user }}</a>
+        {% endif %}
+    </span>
+    <a id="frontadmin-btn-logout" href="{% url admin:logout %}" title="{% trans "Disconnect" %}" class="button red">{% trans "Disconnect" %}</a>
+    <a id="frontadmin-btn-admin" href="{% url admin:index %}" title="{% trans "Edit in admin" %}" class="button" target="_parent">{% trans "Admin" %}</a>
+    {#<a id="frontadmin-btn-metas" href="#" title="{% trans "Edit page metas" %}" class="button">{% trans "Metas" %}</a>#}
+    {% for plugin in plugins %}
+    {{ plugin|safe }}
+    {% endfor %}
+</div>
+<style>{% include "frontadmin/bar.inc.css" %}</style>
+</iframe>
+{% endif %}
+{% endspaceless %}
