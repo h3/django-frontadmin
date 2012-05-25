@@ -1,4 +1,4 @@
-from webcore.contrib.frontadmin.conf import settings
+from frontadmin.conf import settings
 from django.utils.importlib import import_module
 
 class PluginBase(object):
