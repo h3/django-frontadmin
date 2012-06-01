@@ -5,14 +5,21 @@ from django import template
 from django.template import RequestContext, Context
 from django.core.urlresolvers import reverse
 from django.utils.safestring import SafeUnicode
+from django.utils.importlib import import_module
 from frontadmin.conf import settings
-from frontadmin.plugins import load_plugins
 #from django.core.urlresolvers import RegexURLResolver, reverse
 #from django.utils.safestring import SafeString
 #from django.utils.translation import gettext as _
 
 register = template.Library()
 
+def load_plugins(request):
+    context = []
+    for p in settings.PLUGINS:
+        module = import_module(p)
+        context.append(module.Plugin(request).get_context())
+    return context
+    
 @register.simple_tag()
 def frontadmin_bar(request):
     """
