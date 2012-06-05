@@ -1,0 +1,21 @@
+/* 
+    SCSS3 (c) 2011 Motion Média 
+    Inspired by http://css3please.com/
+ */
+.clearfix {
+  zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0; }
+  .clearfix:after {
+    clear: both; }
+
+.reset-box {
+  margin: 0;
+  padding: 0; }

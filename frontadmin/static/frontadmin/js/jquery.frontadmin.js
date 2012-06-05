@@ -1,3 +1,8 @@
+/* django-frontadmin's JavaScript
+ * Author: Maxime Haineault <max@motion-m.ca>
+ * (c) 2012 Motion Média
+ * */
+
 $(function(){
 
     $.getQueryParam = function(name, url) {
@@ -41,9 +46,7 @@ $(function(){
         };
 
         $self.getMainBarWidth = function(){
-            var w = parseInt($(document).width() / 2.5);
-            if (w < 600) { w = 600; }
-            return w
+            return parseInt($(document).width());
         };
 
         $self.cookie = function(k, v) {
@@ -76,7 +79,7 @@ $(function(){
                   .attr('title', src.data('title-collapsed'))
                   .text('+');
 
-            bar.addClass('minimized').animate({width: 36}).css('opacity', 0.5);
+            bar.addClass('minimized').animate({width: 42}).css('opacity', 0.5);
 
         };
 
@@ -174,10 +177,12 @@ $(function(){
 
             // Readjust bar & toolbars on window resize
             onWindowResize: function(e) {
-                $self.toolbars.each(function(){
-                    $(this).width($(this).parent().width());
-                })
-                $self.bar.width($self.getMainBarWidth());
+                if ($self.states.toolbars_visibles) {
+                    $self.toolbars.each(function(){
+                        $(this).width($(this).parent().width());
+                    });
+                    $self.bar.width($self.getMainBarWidth());
+                }
             },
             
             // Log the user out and hide frontadmin
@@ -457,7 +462,7 @@ $(function(){
                     $self.events.onWindowResize();
                 }
                 else {
-                    $self.bar.addClass('minimized').width(36).fadeTo('fast', 0.5);
+                    $self.bar.addClass('minimized').width(42).fadeTo('fast', 0.5);
                 }
 
                 // Little trick to load iframe content locally

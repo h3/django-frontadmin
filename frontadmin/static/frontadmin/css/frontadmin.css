@@ -1,92 +1,112 @@
-/* Webcore frontadmin's general styles
+/* django-frontadmin's general styles
  * Author: Maxime Haineault <max@motion-m.ca>
- * (c) 2011 Motion Média
+ * (c) 2012 Motion Média
  * */
+/* 
+    SCSS3 (c) 2011 Motion Média 
+    Inspired by http://css3please.com/
+ */
+.clearfix {
+  zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0; }
+  .clearfix:after {
+    clear: both; }
+
+.reset-box {
+  margin: 0;
+  padding: 0; }
 
 html.frontadmin {
-    padding-bottom: 24px;
-}
+  padding-bottom: 24px; }
+  html.frontadmin.frontadmin-show-toolbars {
+    margin-top: 30px; }
+    html.frontadmin.frontadmin-show-toolbars .frontadmin-block-content {
+      cursor: pointer; }
 
 .frontadmin-toolbar-frame {
-    width: 100%;
-    display: block;
-    height: 24px;
-    margin: 0;
-    border: 1px solid #ccc;
-    z-index: 100000;
-    -moz-box-shadow: 0 0 1px #fff;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px;
-    opacity: 0.65;
-    display: none;
-}
+  width: 100%;
+  display: block;
+  height: 24px;
+  margin: 0;
+  border: 1px solid #ccc;
+  z-index: 100000;
+  -webkit-box-shadow: 0 0 1px white;
+  -moz-box-shadow: 0 0 1px white;
+  box-shadow: 0 0 1px white;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  border-radius: 2px 2px 2px 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -khtml-opacity: 0.55;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=55)";
+  filter: alpha(opacity=55);
+  opacity: 0.55;
+  display: none; }
 
 .frontadmin-show-toolbars .frontadmin-block:hover .frontadmin-toolbar-frame,
 .frontadmin-show-toolbars .frontadmin-toolbar-frame:hover {
-    opacity: 1.0;
-}
+  -khtml-opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1; }
 
-.frontadmin-show-toolbars .frontadmin-toolbar-frame,
-.frontadmin-show-toolbars .frontadmin-block {
-    display: block;
-}
+.frontadmin-show-toolbars .frontadmin-toolbar-frame, .frontadmin-show-toolbars .frontadmin-block {
+  display: block; }
 
 .frontadmin-show-toolbars .frontadmin-block *:hover .frontadmin-block-content,
 .frontadmin-show-toolbars .frontadmin-block:hover .frontadmin-block-content > * {
-    /*background-color: #def!important;*/
-    background-color:rgba(1, 174, 240, 0.1)!important;
-
-}
-
-.frontadmin-show-toolbars .frontadmin-block-content {
-    cursor: pointer;
-}
+  /*background-color: #def!important;*/
+  background-color: rgba(1, 174, 240, 0.1) !important; }
 
 /* Main frontadmin bar */
 #frontadmin-bar-frame {
-    width: 70%;
-    display: block;
-    height: 28px;
-    margin: 0;
-    position: fixed;
-    right: 0;
-    bottom: -1px;
-    border: 1px solid #ccc;
-    z-index: 100000;
-    -moz-box-shadow: 0 0 1px #fff;
-    -moz-border-radius: 2px 2px 0 0;
-    -webkit-border-radius: 2px 2px 0 0;
-    -o-border-radius: 2px 2px 0 0;
-    border-radius: 2px 2px 0 0;
-}
+  display: block;
+  height: 30px;
+  margin: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  -webkit-box-shadow: 0 0 1px white;
+  -moz-box-shadow: 0 0 1px white;
+  box-shadow: 0 0 1px white;
+  -moz-border-radius: 2px 2px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; }
 
 /* Editing popups */
 #frontadmin-iframe-window {
-    background: #222 url(../img/loading.gif) no-repeat center center;
-    border: 1px solid #555;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -o-border-radius: 3px;
-    moz-border-radius: 3px;
-    -moz-box-shadow: 0 0 100px #fff;
-    -webkit-box-shadow: 0 0 100px #fff;
-    -o-box-shadow: 0 0 100px #fff;
-    box-shadow: 0 0 100px #fff;
-}
-
-#frontadmin-iframe-window iframe {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -o-border-radius: 3px;
-    moz-border-radius: 3px;
-}
-
-#frontadmin-iframe-window.saving iframe {
-    display: none;
-}
-
-#frontadmin-iframe-window.saving iframe {
-    display: none;
-}
+  background: #222222 url(../img/loading.gif) no-repeat center center;
+  border: 1px solid #555;
+  -webkit-box-shadow: 0 0 100px white;
+  -moz-box-shadow: 0 0 100px white;
+  box-shadow: 0 0 100px white;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; }
+  #frontadmin-iframe-window iframe {
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box; }
+  #frontadmin-iframe-window.saving iframe {
+    display: none; }

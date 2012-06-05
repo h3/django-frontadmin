@@ -3,7 +3,7 @@
 {% load i18n %}
 <iframe id="frontadmin-bar-frame" style="display:none;">
 <div class="frontadmin-bar">
-    <a  id="frontadmin-btn-toggle" 
+    <a id="frontadmin-btn-toggle" 
         href="#toggle" 
         title="{% trans "Hide administration toolbars" %}" 
         data-title="{% trans "Hide administration toolbars" %}" 
@@ -20,10 +20,8 @@
     </span>
     <a id="frontadmin-btn-logout" href="{% url admin:logout %}" title="{% trans "Disconnect" %}" class="button red">{% trans "Disconnect" %}</a>
     <a id="frontadmin-btn-admin" href="{% url admin:index %}" title="{% trans "Edit in admin" %}" class="button" target="_parent">{% trans "Admin" %}</a>
-    {#<a id="frontadmin-btn-metas" href="#" title="{% trans "Edit page metas" %}" class="button">{% trans "Metas" %}</a>#}
     {% for plugin in plugins %}
-    {{ plugin|safe }}
-    {% endfor %}
+    {{ plugin|safe }}{% endfor %}
 </div>
 <style>{% include "frontadmin/bar.inc.css" %}</style>
 </iframe>
