@@ -66,6 +66,20 @@ Displaying the toolbar for object lists works in a similar way, except that we p
     {% endfrontadmin %}
 
 
+Screenshots
+===========
+
+Screenshot of toolbars. When logged in the toolbars appears over editable blocks. The main toolbar can be hidden, which hides all other toolbars as well:
+
+.. figure:: http://i.imgur.com/7gDNC.png
+    :figwidth: image
+
+When the "Admin" button is clicked on a toolbar, it takes the user to the admin page. When he clicks "Edit" it opens the edit form within an overlay:
+
+.. figure:: http://i.imgur.com/7aYxH.png
+    :figwidth: image
+
+
 Credits
 =======
 
