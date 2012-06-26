@@ -110,9 +110,13 @@ class CaptureasNode(template.Node):
         request = self.request.resolve(context)
         output = self.nodelist.render(context)
 
-        if not self._has_perm(request, var):
-            return output
-
+        try:
+            if not self._has_perm(request, var):
+                return output
+        except AttributeError:
+            msg = 'The requested object is not administrable. Frontadmin accepts only models(app.Model) or single object instances(app.Model.object).'
+            raise AttributeError(msg)
+        
         if isinstance(var, SafeUnicode):
             css_class = var.replace('.', '-').lower()
         else:
