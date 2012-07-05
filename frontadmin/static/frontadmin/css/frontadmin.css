@@ -78,15 +78,10 @@ html.frontadmin {
   top: 0;
   left: 0;
   z-index: 99999999;
+  border: 0;
   -webkit-box-shadow: 0 0 1px white;
   -moz-box-shadow: 0 0 1px white;
-  box-shadow: 0 0 1px white;
-  -moz-border-radius: 2px 2px 0 0;
-  -webkit-border-radius: 2px 2px 0 0;
-  border-radius: 2px 2px 0 0;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box; }
+  box-shadow: 0 0 1px white; }
 
 /* Editing popups */
 #frontadmin-iframe-window {
