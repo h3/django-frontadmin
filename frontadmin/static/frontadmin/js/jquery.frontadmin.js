@@ -263,7 +263,8 @@ $(function(){
                             }
                         }
                         else {
-                            frame.removeClass('saving');
+                            $(this).parent().removeClass('saving');
+                            $(this).removeClass('saving');
                         }
                     }
                     else if ($(this).hasClass('deleting')) {
@@ -327,6 +328,10 @@ $(function(){
                                 //$self.bindToolbarEvents(content.parent().find('iframe'))
                                 //$.frontendMessage(msg.find('li:first').text())
                             });
+                        }
+                        else {
+                            frame.parent().removeClass('saving');
+                            frame.removeClass('saving').removeClass('continue');
                         }
                         frame.removeClass('saving').removeClass('continue');
                     }
