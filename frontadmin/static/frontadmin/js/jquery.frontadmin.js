@@ -159,7 +159,7 @@ $(function(){
             d.find('#header, #breadcrumbs').remove().end()
              .find('body').css({paddingTop: 0}).end()
              //.find('.module.footer')
-             .find('.grp-submit-row')
+             .find('.grp-submit-row, .module.footer') //checks for .grp-submit-row from sehmaschine grappelli origin or .module.footer from h3 grappelli fork
                  .css({
                       '-moz-border-radius': '0 0 4px 4px',
                       '-webkit-border-radius': '0 0 4px 4px',
