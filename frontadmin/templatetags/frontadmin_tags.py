@@ -4,7 +4,6 @@
 from django import template
 from django.template import RequestContext, Context
 from django.core.urlresolvers import reverse
-from django.utils.safestring import SafeUnicode
 from django.utils.importlib import import_module
 from frontadmin.conf import settings
 #from django.core.urlresolvers import RegexURLResolver, reverse
@@ -37,7 +36,7 @@ def frontadmin_bar(request):
 def frontadmin_toolbar(request, obj):
 
     # Changelist admin
-    if isinstance(obj, SafeUnicode):
+    if isinstance(obj, (str,unicode)):
         app_label = obj.split('.')[0].lower()
         app_model = obj.split('.')[1].lower()
         t = loader.select_template([
@@ -92,7 +91,7 @@ class CaptureasNode(template.Node):
             return False
         elif not request.user.is_authenticated():
             return False
-        elif isinstance(var, SafeUnicode):
+        elif isinstance(var, (str,unicode)):
             app = var.split('.')[0].lower()
             model = var.split('.')[1].lower()
             return request.user.has_perm("%s.add_%s" % (app, model)) and \
@@ -117,7 +116,7 @@ class CaptureasNode(template.Node):
             msg = 'The requested object is not administrable. Frontadmin accepts only models(app.Model) or single object instances(app.Model.object).'
             raise AttributeError(msg)
         
-        if isinstance(var, SafeUnicode):
+        if isinstance(var, (str,unicode)):
             css_class = var.replace('.', '-').lower()
         else:
             css_class = '%s-%s-%s' % (var._meta.app_label, var._meta.object_name.lower(), var.pk)
