@@ -50,6 +50,7 @@ $(function(){
         };
 
         $self.cookie = function(k, v) {
+            alert ($.cookie);
             if (v) { return $.cookie(k, v, {path: '/'}); }
             else   { return $.cookie(k,    {path: '/'}); }
         };
