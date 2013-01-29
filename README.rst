@@ -18,13 +18,17 @@ Displaying the main toolbar
 
 To display the main toolbar you only need to add this code to your main template (ex: `base.html`).
 
-In the `<head>` of your page you can include the required js/css using an include like this::
+In the `<head>` of your page you can include the required js/css using an include like this:
+
+.. code-block:: django
 
     {% if user.is_authenticated and user.is_staff %}
     {% include "frontadmin/frontadmin.inc.html" %}
     {% endif %}
 
-Then call the `frontadmin_bar` within the `<body>` tag with the `request` as sole parameter::
+Then call the `frontadmin_bar` within the `<body>` tag with the `request` as sole parameter:
+
+.. code-block:: django
 
     {% load frontadmin_tags %}
     {% frontadmin_bar request %}
@@ -33,7 +37,9 @@ Then call the `frontadmin_bar` within the `<body>` tag with the `request` as sol
 Displaying toolbar for objects
 ------------------------------
 
-To display an edit toolbar for single object, simply do this::
+To display an edit toolbar for single object, simply do this:
+
+.. code-block:: django
 
     {% load frontadmin_tags %}
 
@@ -41,7 +47,9 @@ To display an edit toolbar for single object, simply do this::
     {{ object }}
     {% endfrontadmin %}
 
-This works pretty well with block applications like django-generic-flatblocks::
+This works pretty well with block applications like django-generic-flatblocks:
+
+.. code-block:: django
 
     {% load generic_flatblocks frontadmin_tags markup %}
 
@@ -54,7 +62,9 @@ This works pretty well with block applications like django-generic-flatblocks::
 Displaying toolbar for object lists
 -----------------------------------
 
-Displaying the toolbar for object lists works in a similar way, except that we provide a `app.Model` path instead of a object::
+Displaying the toolbar for object lists works in a similar way, except that we provide a `app.Model` path instead of a object:
+
+.. code-block:: django
 
     {% load frontadmin_tags %}
 
