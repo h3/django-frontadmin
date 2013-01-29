@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-frontadmin',
-    version='0.0.1',
+    version='2.0.0',
     description='A django frontadmin ..',
     author='Maxime Haineault (Motion Média)',
     author_email='max@motion-m.ca',

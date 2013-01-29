@@ -1,9 +1,36 @@
 /* django-frontadmin's JavaScript
  * Author: Maxime Haineault <max@motion-m.ca>
- * (c) 2012 Motion Média
+ * (c) 2013 Motion Média
  * */
 
 $(function(){
+
+    var styles = [
+        '<style>',
+            'body {',
+                'padding-top: 0;',
+            '}',
+            '.cancel-button-container input {',
+                'font-color: #2B8AAB;',
+                'background: #444;',
+                'background: -moz-linear-gradient(top, #666, #444);',
+                'background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#444));',
+                'background: -o-linear-gradient(top, #666, #444);',
+                'border:none;',
+            '}',
+            '.cancel-button-container input:hover {',
+                'background: #e3e3e3;',
+                'background: -moz-linear-gradient(top, #e3e3e3, #d6d6d6);',
+                'background: -webkit-gradient(linear, left top, left bottom, from(#e3e3e3), to(#d6d6d6));',
+                'background: -o-linear-gradient(top, #e3e3e3, #d6d6d6);',
+            '}',
+            '.grp-submit-row {',
+                '-moz-border-radius: 0 0 4px 4px',
+                '-webkit-border-radius: 0 0 4px 4px',
+                'border-radius: 0 0 4px 4px',
+            '}',
+        '</style>'
+    ].join('');
 
     $.getQueryParam = function(name, url) {
         if (!url) { url = window.location.search; }
@@ -127,21 +154,17 @@ $(function(){
 
         // Remove toolbars and useless stuff in window mode
         $self.cleanDocument = function(d) {
-            // add cancel button
             var $this  = this;
-            var cancel = $('<li class="cancel-button-container"><input class="grp_button" type="submit" name="_cancel" value="Cancel" style="background-color:#444;font-color:#2B8AAB;background:-moz-linear-gradient(center top, #666, #444) repeat scroll 0 0 transparent;border:none;"></li>')
+
+            d.find('body').append(styles);
+
+            // add cancel button
+            var cancel = $('<li class="cancel-button-container"><input class="grp-button" type="submit" name="_cancel" value="Cancel"></li>');
             cancel.find('input').bind('click.adminToolbar', function() {
                 $self.closeActiveFrame();
                 return false;
-            })
-            cancel.find('input').hover(
-                function(){
-                    $(this).css('background', '-moz-linear-gradient(center top, #E3E3E3, #D6D6D6) repeat scroll 0 0 transparent')
-                },
-                function(){
-                    $(this).css('background', '-moz-linear-gradient(center top, #666, #444) repeat scroll 0 0 transparent')
-                }
-            );
+            });
+
             if (d.find('#changelist').get(0)) {
                var changelist = true;
                if (!d.find('#submit').find('.submit-row').get(0)) {
@@ -154,18 +177,11 @@ $(function(){
                     $self.closeActiveFrame();
                     return false;
                 }
-            })
+            });
 
             d.find('#header, #breadcrumbs').remove().end()
-             .find('body').css({paddingTop: 0}).end()
-             //.find('.module.footer')
-             .find('.grp-submit-row, .module.footer') //checks for .grp-submit-row from sehmaschine grappelli origin or .module.footer from h3 grappelli fork
-                 .css({
-                      '-moz-border-radius': '0 0 4px 4px',
-                      '-webkit-border-radius': '0 0 4px 4px',
-                      'border-radius': '0 0 4px 4px'
-                  })
-                 .find('ul').append(cancel).end()
+             .find('.grp-submit-row')
+                 .find('ul:first').append(cancel).end()
                  .find('input[name="_continue"]').bind('click', function() {
                      $self.states.active_frame.addClass('saving continue')
                      $self.states.active_frame.parent().addClass('saving continue')
@@ -325,8 +341,6 @@ $(function(){
                             content.load(url, function() {
                                 content.find('.frontadmin-toolbar-frame').remove()
                                 content = frame.children().unwrap();
-                                //$self.bindToolbarEvents(content.parent().find('iframe'))
-                                //$.frontendMessage(msg.find('li:first').text())
                             });
                         }
                         else {
@@ -392,7 +406,6 @@ $(function(){
                         var errors = doc.find('.errornote').get(0);
                         if (!errors) {
                             $self.closeActiveFrame();
-                            //$.frontendMessage(msg.find('li:first').text())
                             block.slideUp('slow', function() {
                                 $(this).remove();
                             })
